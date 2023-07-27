@@ -1,6 +1,5 @@
 import random
-import time
-
+from Utils import Screen_cleaner
 def generate_sequence(difficulty):
     rand_list = []
     for i in range(difficulty):
@@ -22,8 +21,7 @@ def is_list_equal(random_list, input_user_list):
 def play(difficulty):
     random_list = generate_sequence(difficulty)
     print(random_list, end='', flush=True)
-    time.sleep(0.7)
-    print('\r' + ' ' * len(str(random_list)), end='', flush=True)
+    Screen_cleaner()
     input_user_list = get_list_from_user(difficulty)
     game_flag = is_list_equal(random_list, input_user_list)
     if(game_flag):

@@ -1,5 +1,4 @@
-import requests
-import random
+import requests , random
 
 def get_currency_rate(from_currency, to_currency):
     url = f'https://api.exchangerate-api.com/v4/latest/{from_currency}'

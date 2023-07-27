@@ -1,5 +1,5 @@
-import MemoryGame, GuessGame, CurrencyRouletteGame
-
+import MemoryGame, GuessGame, CurrencyRouletteGame, Score, Utils
+import os
 def welcome(name):
     return f'Hello {name} and welcome to the World of Games (WoG). \n' \
            f'Here you can find many cool games to play.'
@@ -30,10 +30,18 @@ def load_game():
         except:
             print("That's not a valid game difficulty option!")
     if game_chosen == 1:
-        GuessGame.play(game_difficulty)
+        win = GuessGame.play(game_difficulty)
+        if (win):
+            Score.add_score(game_difficulty)
     elif game_chosen == 2:
-        MemoryGame.play(game_difficulty)
+        win = MemoryGame.play(game_difficulty)
+        if (win):
+            Score.add_score(game_difficulty)
     else:
-        CurrencyRouletteGame.play(game_difficulty)
-
+        win = CurrencyRouletteGame.play(game_difficulty)
+        if (win):
+            Score.add_score(game_difficulty)
+    play_another_game = input("Would u like to play another game? please write Y for yes and N for no")
+    if(play_another_game == 'Y'):
+        load_game()
 
